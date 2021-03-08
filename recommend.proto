@@ -1,0 +1,21 @@
+// Syntax가 없으면 자동으로 proto2로 인식됨. grpc에서는 최신버전인 proto3를 사
+syntax = "proto3";
+
+// package 선언을 통해 naming 충돌 예방
+// python에서는 directory 기반으로 동작하기 때문에 naming 충돌이 일어나지 않지만, 다른 언어에서는 다르기에 선언해주어야
+package recommend;
+
+
+// Service Definition for Recommend
+service Recommender {
+  rpc GetRecommend (UserInfo) returns (Contents) {}
+}
+
+// Message Definition for Recommend
+message UserInfo {
+  string name = 1;
+}
+
+message Contents {
+  string message = 1;
+}
